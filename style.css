@@ -9,11 +9,37 @@ body {
     display: flex;
     flex-direction: column;
     background-color: burlywood;
-    width: 900px;
-    height: 600px;
+    color: #d2cccc;
+    width: 600px;
+    height: 400px;
+}
+.card p, .card h2 {
+    margin-left: 10px;
 }
 .top-card, .bottom-card {
     flex: 1;
-    background-color: blueviolet;
+    background-color: #19216e;
     margin: 10px;
 }
+.bottom-card {
+    display: flex;
+    flex-direction: column;
+}
+.bottom-card p {
+    margin-left: 10px;
+}
+.top-term-card, .bottom-term-card {
+    flex: 1;    
+    background-color: black;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.bottom-term-card {
+    background-color: white;
+}
+/* .one, .two { */
+    /* width: 100px;
+    height: 30px;
+    background-color: red;
+} */
