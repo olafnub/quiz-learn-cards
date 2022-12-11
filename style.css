@@ -30,13 +30,22 @@ body {
 }
 .top-term-card, .bottom-term-card {
     flex: 1;    
-    background-color: black;
+    background-color: 19216e;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
 }
-.bottom-term-card {
-    background-color: white;
+button:hover {
+    cursor:pointer;
+    border: 1px solid white;
+}
+button {
+    height: 40px;
+    width: 200px;
+    font-size: 11px;
+    background-color: #19216e;
+    border: 1px solid gray;
+    color: white;
 }
 /* .one, .two { */
     /* width: 100px;
