@@ -1,4 +1,19 @@
 body {
     background-color: gainsboro;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
+.card {
+    display: flex;
+    flex-direction: column;
+    background-color: burlywood;
+    width: 900px;
+    height: 600px;
+}
+.top-card, .bottom-card {
+    flex: 1;
+    background-color: blueviolet;
+    margin: 10px;
+}
