@@ -29,3 +29,8 @@ window.onload = () => {
 
 
 
+
+// Have each as a number so to get one term it would be 3.term
+// Have a correct and wrong box / array. Move them into those if correct or even have 2 sets of correctness. One for getting it right, another for writing the term and getting it right
+// Have a override i was correct button
+
