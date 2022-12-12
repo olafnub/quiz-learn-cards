@@ -4,6 +4,7 @@ body {
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    height: auto;
 }
 
 .card {
@@ -31,16 +32,16 @@ body {
 }
 .top-term-card, .bottom-term-card {
     flex: 1;    
-    background-color: 19216e;
+    background-color: #19216e;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
 }
-button:hover {
+.card button:hover {
     cursor:pointer;
     border: 1px solid white;
 }
-button {
+.card button {
     height: 40px;
     width: 200px;
     font-size: 11px;
@@ -48,7 +49,7 @@ button {
     border: 1px solid gray;
     color: white;
 }
-.cardTwo {
+.cardTwo form {
     margin-top: 80px;
     padding: 10px;
     color: white;
@@ -57,4 +58,9 @@ button {
     border-bottom: 2px solid brown;
     border-right: 2px solid orange;
     border-left: 2px solid green;
+}
+.cardTwo {
+    color: white;
+    border: 1px solid green;
+    height: 500px;
 }
