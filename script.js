@@ -1,9 +1,12 @@
 // Get definition for top half of card
 let storeTerms = [];
+let count = 0;
+
 const addTerm = (ev) => {
     ev.preventDefault();
     
     let addTerms = {
+        number: count++,
         term: document.querySelector("#fterm").value,
         definition: document.querySelector("#fdefi").value
     }
@@ -14,14 +17,18 @@ const addTerm = (ev) => {
     } else {
     storeTerms += JSON.stringify(addTerms);
     let logUserInput = document.querySelector("#termsAdded pre");
-    logUserInput.textContent += addTerms.term + "has been added\n";
+    logUserInput.textContent += addTerms.term + " has been added\n";
     }
     document.forms[0].reset();
 
 
 }
 window.onload = () => {
+    // start game
+    let readyBtn = document.getElementById("readyBtn");
+    document.addEventListener('click', startGame);
 
+    // Submit form button
     document.getElementById("createButton").addEventListener('click', addTerm);
     // let getDefinition = document.querySelector("#definition");
     // getDefinition.textContent = addTerms.definition;
