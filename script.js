@@ -44,6 +44,7 @@ function startGame() {
     if (count < 4) {
         alert('You have less than 4 terms');
         } else {
+        readyBtn.style.display = "none";
         stopBtn.style.display = "block";
         }    
 }
