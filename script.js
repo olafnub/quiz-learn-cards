@@ -1,6 +1,7 @@
 // Get definition for top half of card
 let storeTerms = [];
 let count = 0;
+let stopBtn = document.querySelector("#stopBtn");
 
 const addTerm = (ev) => {
     ev.preventDefault();
@@ -36,14 +37,14 @@ const addTerm = (ev) => {
 
 }
 let term1 = document.querySelector("#term-one");
-let term2 = docuemtn.querSelector("#term-two");
-let term3 = docuemtn.querSelector("#term-three");
-let term4 = docuemtn.querSelector("#term-four");
+let term2 = document.querySelector("#term-two");
+let term3 = document.querySelector("#term-three");
+let term4 = document.querySelector("#term-four");
 function startGame() {
     if (count < 4) {
         alert('You have less than 4 terms');
         } else {
-    
+        stopBtn.style.display = "block";
         }    
 }
 
