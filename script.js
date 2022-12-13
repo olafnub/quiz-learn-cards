@@ -35,12 +35,15 @@ const addTerm = (ev) => {
     
 
 }
-
+let term1 = document.querySelector("#term-one");
+let term2 = docuemtn.querSelector("#term-two");
+let term3 = docuemtn.querSelector("#term-three");
+let term4 = docuemtn.querSelector("#term-four");
 function startGame() {
     if (count < 4) {
         alert('You have less than 4 terms');
         } else {
-
+    
         }    
 }
 
