@@ -64,7 +64,16 @@ body {
     border: 1px solid green;
     height: 500px;
 }
-#createButton {
+#createButton, #clearLog {
     color: white;
     background-color: brown;
+    height:25px;
+}
+#stopBtn {
+    display: none;
+}
+.termLog {
+    display:flex;
+    align-items: center;
+    gap: 10px;
 }
