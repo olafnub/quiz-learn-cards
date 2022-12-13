@@ -37,9 +37,9 @@ body {
     justify-content: space-evenly;
     align-items: center;
 }
-.card button:hover, #createButton:hover {
+.card button:hover, #createButton:hover, #clearLog:hover {
     cursor:pointer;
-    border: 1px solid white;
+    border-color: white;
 }
 .card button {
     height: 40px;
