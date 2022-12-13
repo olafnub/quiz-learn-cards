@@ -6,7 +6,6 @@ const addTerm = (ev) => {
     ev.preventDefault();
     
     let addTerms = {
-        number: count++,
         term: document.querySelector("#fterm").value,
         definition: document.querySelector("#fdefi").value
     }
@@ -18,15 +17,38 @@ const addTerm = (ev) => {
     storeTerms += JSON.stringify(addTerms);
     let logUserInput = document.querySelector("#termsAdded pre");
     logUserInput.textContent += addTerms.term + " has been added\n";
+    count++;
+    
+    // make sure numbers aren't repeated
+    if (count!=0) {
+        let numberAlready = localStorage.length;
+        for (let i = 0; i <= numberAlready; i++) {
+            count++;
+        }
+        localStorage.setItem(JSON.stringify(count), storeTerms);
+    } 
+    else {
+        localStorage.setItem(JSON.stringify(count),storeTerms);
+    }
     }
     document.forms[0].reset();
-
+    
 
 }
+
+function startGame() {
+    if (count < 4) {
+        alert('You have less than 4 terms');
+        } else {
+
+        }    
+}
+
+
 window.onload = () => {
     // start game
     let readyBtn = document.getElementById("readyBtn");
-    document.addEventListener('click', startGame);
+    readyBtn.addEventListener('click', startGame); //remove the button when game starts or change it to stop game // alert stopping the game will remove all your terms
 
     // Submit form button
     document.getElementById("createButton").addEventListener('click', addTerm);
