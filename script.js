@@ -15,7 +15,7 @@ const addTerm = (ev) => {
         alert('try again');
     } 
     else {
-        storeTerms.push(JSON.stringify(addTerms));
+        storeTerms.push(addTerms);
         let logUserInput = document.querySelector("#termsAdded pre");
         logUserInput.textContent += addTerms.term + " has been added\n";
         count++;
@@ -26,10 +26,10 @@ const addTerm = (ev) => {
             for (let i = 0; i < numberAlready; i++) {
                 count = localStorage.length + 1;
             }
-            localStorage.setItem(JSON.stringify(count), storeTerms);
+            localStorage.setItem(count, storeTerms[count]);
         } 
         else {
-            localStorage.setItem(JSON.stringify(count), storeTerms);
+            localStorage.setItem(count, storeTerms[count]);
         }
     }
     document.forms[0].reset();
@@ -42,7 +42,7 @@ const term2 = document.querySelector("#term-two");
 const term3 = document.querySelector("#term-three");
 const term4 = document.querySelector("#term-four");
 function startGame() {
-    if (count < 4) {
+    if (localStorage.length < 4) {
         alert('You have less than 4 terms');
         } else {
         readyBtn.style.display = "none";
