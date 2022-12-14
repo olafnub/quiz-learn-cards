@@ -1,7 +1,6 @@
 // Get definition for top half of card
 let storeTerms = [];
 let count = 0;
-let stopBtn = document.querySelector("#stopBtn");
 
 const addTerm = (ev) => {
     ev.preventDefault();
@@ -48,13 +47,24 @@ function startGame() {
         stopBtn.style.display = "block";
         }    
 }
+function stopGame() {
+    let userStopGameInput = prompt('You will lose your progress and terms, "yes" or "no"');
+    if (userStopGameInput == 'yes') {
+        location.reload();
+    } else if (userStopGameInput == 'no') {
+        startGame();
+    } else {
+        alert('Please enter "yes" or "no"');
+    }
+}
 
 
 window.onload = () => {
     // start game
     let readyBtn = document.getElementById("readyBtn");
     readyBtn.addEventListener('click', startGame); //remove the button when game starts or change it to stop game // alert stopping the game will remove all your terms
-
+    let stopBtn = document.querySelector("#stopBtn");
+    stopBtn.addEventListener('click', stopGame);
     // Submit form button
     document.getElementById("createButton").addEventListener('click', addTerm);
     // let getDefinition = document.querySelector("#definition");
