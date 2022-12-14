@@ -43,21 +43,18 @@ const term2 = document.querySelector("#term-two");
 const term3 = document.querySelector("#term-three");
 const term4 = document.querySelector("#term-four");
 function startGame() {
-    if (localStorage.length < 4) {
+    if (JSON.parse(localStorage.getItem('gameCards')).length < 4) {
         alert('You have less than 4 terms');
-        } else {
+        } 
+    else {
         readyBtn.style.display = "none";
         stopBtn.style.display = "block";
         // function for randomizing terms
         let getDefinition = document.querySelector("#definition");
-        for (let k = 0; k < localStorage.length-1; k++) {
-        let randomNumber = Math.floor(Math.random() * localStorage.length-1);
-        let getKey = localStorage.key(randomNumber);
-        getDefinition.innerHTML = JSON.parse(localStorage.getItem("1")).definition;
-        // getDefinition.innerHTML = getAnswerDefiniton.definition;
-    
-        }
-    }    
+        let parsonWord = JSON.parse(localStorage.getItem('gameCards'));
+        let randomNumber = Math.floor(Math.random() * parsonWord.length);
+        getDefinition.innerHTML = parsonWord[randomNumber].definition;
+         }    
 }
 function stopGame() {
     let userStopGameInput = prompt('You will lose your progress and terms, "yes" or "no"');
