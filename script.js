@@ -2,6 +2,11 @@
 let storeTerms = [];
 let count = 0;
 
+// function callLogUserInput() {
+//     let logUserInput = document.querySelector("#termsAdded pre");
+
+// }
+
 const addTerm = (ev) => {
     ev.preventDefault();
     
@@ -59,6 +64,13 @@ function stopGame() {
         alert('Please enter "yes" or "no"');
     }
 }
+function clearEverything() {
+    localStorage.clear();
+    count = 0;
+    // callLogUserInput();
+    // alert(logUserInput.innerHTML);
+}
+
 
 
 window.onload = () => {
@@ -67,6 +79,8 @@ window.onload = () => {
     readyBtn.addEventListener('click', startGame); //remove the button when game starts or change it to stop game // alert stopping the game will remove all your terms
     let stopBtn = document.querySelector("#stopBtn");
     stopBtn.addEventListener('click', stopGame);
+    let clearLog = document.querySelector("#clearLog");
+    clearLog.addEventListener('click', clearEverything);
     // Submit form button
     document.getElementById("createButton").addEventListener('click', addTerm);
     // let getDefinition = document.querySelector("#definition");
