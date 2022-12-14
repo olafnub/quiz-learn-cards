@@ -6,6 +6,7 @@ const addTerm = (ev) => {
     ev.preventDefault();
     
     let addTerms = {
+        // number: count,
         term: document.querySelector("#fterm").value,
         definition: document.querySelector("#fdefi").value
     }
@@ -26,10 +27,10 @@ const addTerm = (ev) => {
             for (let i = 0; i < numberAlready; i++) {
                 count = localStorage.length + 1;
             }
-            localStorage.setItem(count, storeTerms[count]);
+            localStorage.setItem('gameCards', JSON.stringify(storeTerms)); //turn gameCards into their wanted category
         } 
         else {
-            localStorage.setItem(count, storeTerms[count]);
+            localStorage.setItem('gameCards', JSON.stringify(storeTerms));
         }
     }
     document.forms[0].reset();
@@ -51,7 +52,7 @@ function startGame() {
         let getDefinition = document.querySelector("#definition");
         for (let k = 0; k < localStorage.length-1; k++) {
         let randomNumber = Math.floor(Math.random() * localStorage.length-1);
-        let getKey = JSON.stringify(localStorage.key(randomNumber));
+        let getKey = localStorage.key(randomNumber);
         getDefinition.innerHTML = JSON.parse(localStorage.getItem("1")).definition;
         // getDefinition.innerHTML = getAnswerDefiniton.definition;
     
