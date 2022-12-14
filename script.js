@@ -21,9 +21,9 @@ const addTerm = (ev) => {
     
     // make sure numbers aren't repeated
     if (count!=0) {
-        let numberAlready = localStorage.length;
-        for (let i = 0; i <= numberAlready; i++) {
-            count++;
+        let numberAlready = localStorage.length-1;
+        for (let i = 0; i < numberAlready; i++) {
+            count = localStorage.length + 1;
         }
         localStorage.setItem(JSON.stringify(count), storeTerms);
     } 
@@ -45,6 +45,8 @@ function startGame() {
         } else {
         readyBtn.style.display = "none";
         stopBtn.style.display = "block";
+
+
         }    
 }
 function stopGame() {
