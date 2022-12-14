@@ -13,23 +13,24 @@ const addTerm = (ev) => {
 // Check if term is "" -> Remove if nothing
     if (addTerms.value == "" || addTerms.definition == "") {
         alert('try again');
-    } else {
-    storeTerms += JSON.stringify(addTerms);
-    let logUserInput = document.querySelector("#termsAdded pre");
-    logUserInput.textContent += addTerms.term + " has been added\n";
-    count++;
-    
-    // make sure numbers aren't repeated
-    if (count!=0) {
-        let numberAlready = localStorage.length-1;
-        for (let i = 0; i < numberAlready; i++) {
-            count = localStorage.length + 1;
-        }
-        localStorage.setItem(count, storeTerms);
     } 
     else {
-        localStorage.setItem(count, storeTerms);
-    }
+        storeTerms.push(JSON.stringify(addTerms));
+        let logUserInput = document.querySelector("#termsAdded pre");
+        logUserInput.textContent += addTerms.term + " has been added\n";
+        count++;
+        
+        // make sure numbers aren't repeated
+        if (count!=0) {
+            let numberAlready = localStorage.length-1;
+            for (let i = 0; i < numberAlready; i++) {
+                count = localStorage.length + 1;
+            }
+            localStorage.setItem(JSON.stringify(count), storeTerms);
+        } 
+        else {
+            localStorage.setItem(JSON.stringify(count), storeTerms);
+        }
     }
     document.forms[0].reset();
     
@@ -47,14 +48,14 @@ function startGame() {
         readyBtn.style.display = "none";
         stopBtn.style.display = "block";
         // function for randomizing terms
-        // let getDefinition = document.querySelector("#definition");
-        // for (let k = 0; k < localStorage.length-1; k++) {
-        // let randomNumber = Math.floor(Math.random() * localStorage.length-1);
-        // let getKey = localStorage.key(randomNumber);
-        // let getAnswerDefiniton = JSON.parse(localStorage.getItem(getKey));
+        let getDefinition = document.querySelector("#definition");
+        for (let k = 0; k < localStorage.length-1; k++) {
+        let randomNumber = Math.floor(Math.random() * localStorage.length-1);
+        let getKey = JSON.stringify(localStorage.key(randomNumber));
+        getDefinition.innerHTML = JSON.parse(localStorage.getItem("1")).definition;
         // getDefinition.innerHTML = getAnswerDefiniton.definition;
     
-        // }
+        }
     }    
 }
 function stopGame() {
