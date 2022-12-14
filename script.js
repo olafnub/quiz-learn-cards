@@ -1,6 +1,5 @@
 // Get definition for top half of card
 let storeTerms = [];
-let count = 0;
 
 const addTerm = (ev) => {
     ev.preventDefault();
@@ -19,19 +18,8 @@ const addTerm = (ev) => {
         storeTerms.push(addTerms);
         let logUserInput = document.querySelector("#termsAdded pre");
         logUserInput.textContent += addTerms.term + " has been added\n";
-        count++;
         
-        // make sure numbers aren't repeated
-        if (count!=0) {
-            let numberAlready = localStorage.length-1;
-            for (let i = 0; i < numberAlready; i++) {
-                count = localStorage.length + 1;
-            }
-            localStorage.setItem('gameCards', JSON.stringify(storeTerms)); //turn gameCards into their wanted category
-        } 
-        else {
-            localStorage.setItem('gameCards', JSON.stringify(storeTerms));
-        }
+        localStorage.setItem('gameCards', JSON.stringify(storeTerms));
     }
     document.forms[0].reset();
     
@@ -68,7 +56,6 @@ function stopGame() {
 }
 function clearEverything() {
     localStorage.clear();
-    count = 0;
     document.querySelector("#termsAdded pre").innerHTML = '';
 }
 
