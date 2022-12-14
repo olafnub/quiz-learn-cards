@@ -2,11 +2,6 @@
 let storeTerms = [];
 let count = 0;
 
-// function callLogUserInput() {
-//     let logUserInput = document.querySelector("#termsAdded pre");
-
-// }
-
 const addTerm = (ev) => {
     ev.preventDefault();
     
@@ -30,29 +25,37 @@ const addTerm = (ev) => {
         for (let i = 0; i < numberAlready; i++) {
             count = localStorage.length + 1;
         }
-        localStorage.setItem(JSON.stringify(count), storeTerms);
+        localStorage.setItem(count, storeTerms);
     } 
     else {
-        localStorage.setItem(JSON.stringify(count),storeTerms);
+        localStorage.setItem(count, storeTerms);
     }
     }
     document.forms[0].reset();
     
 
 }
-let term1 = document.querySelector("#term-one");
-let term2 = document.querySelector("#term-two");
-let term3 = document.querySelector("#term-three");
-let term4 = document.querySelector("#term-four");
+
+const term1 = document.querySelector("#term-one");
+const term2 = document.querySelector("#term-two");
+const term3 = document.querySelector("#term-three");
+const term4 = document.querySelector("#term-four");
 function startGame() {
     if (count < 4) {
         alert('You have less than 4 terms');
         } else {
         readyBtn.style.display = "none";
         stopBtn.style.display = "block";
-
-
-        }    
+        // function for randomizing terms
+        // let getDefinition = document.querySelector("#definition");
+        // for (let k = 0; k < localStorage.length-1; k++) {
+        // let randomNumber = Math.floor(Math.random() * localStorage.length-1);
+        // let getKey = localStorage.key(randomNumber);
+        // let getAnswerDefiniton = JSON.parse(localStorage.getItem(getKey));
+        // getDefinition.innerHTML = getAnswerDefiniton.definition;
+    
+        // }
+    }    
 }
 function stopGame() {
     let userStopGameInput = prompt('You will lose your progress and terms, "yes" or "no"');
@@ -67,8 +70,7 @@ function stopGame() {
 function clearEverything() {
     localStorage.clear();
     count = 0;
-    // callLogUserInput();
-    // alert(logUserInput.innerHTML);
+    document.querySelector("#termsAdded pre").innerHTML = '';
 }
 
 
@@ -81,10 +83,10 @@ window.onload = () => {
     stopBtn.addEventListener('click', stopGame);
     let clearLog = document.querySelector("#clearLog");
     clearLog.addEventListener('click', clearEverything);
+
     // Submit form button
     document.getElementById("createButton").addEventListener('click', addTerm);
-    // let getDefinition = document.querySelector("#definition");
-    // getDefinition.textContent = addTerms.definition;
+        
 }
 
 
@@ -93,4 +95,3 @@ window.onload = () => {
 // Have each as a number so to get one term it would be 3.term
 // Have a correct and wrong box / array. Move them into those if correct or even have 2 sets of correctness. One for getting it right, another for writing the term and getting it right
 // Have a override i was correct button
-
