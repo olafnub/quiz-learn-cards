@@ -30,6 +30,25 @@ const term1 = document.querySelector("#term-one");
 const term2 = document.querySelector("#term-two");
 const term3 = document.querySelector("#term-three");
 const term4 = document.querySelector("#term-four");
+
+function randomizeCard() {
+    const getDefinition = document.querySelector("#definition");
+    let parsonWord = JSON.parse(localStorage.getItem('gameCards'));
+    const determinedNumber = Math.floor(Math.random() * parsonWord.length);
+    const determinedDefinition = parsonWord[determinedNumber].definition;
+    getDefinition.innerHTML = determinedDefinition;
+
+    for (let k = 0; k < parsonWord.length; k++) {
+        let randomNumber = Math.floor(Math.random() * parsonWord.length);
+        let randomDefinition = parsonWord[randomNumber].definition;
+        if (getDefinition.innerHTML != determinedDefinition) {
+            term[k].innerHTML = randomDefinition; //this would be a cool function
+        } else {
+            term[k].innerHTML = determinedDefinition;
+        }
+    }
+    
+}
 function startGame() {
     if (JSON.parse(localStorage.getItem('gameCards')).length < 4) {
         alert('You have less than 4 terms');
@@ -38,10 +57,7 @@ function startGame() {
         readyBtn.style.display = "none";
         stopBtn.style.display = "block";
         // function for randomizing terms
-        let getDefinition = document.querySelector("#definition");
-        let parsonWord = JSON.parse(localStorage.getItem('gameCards'));
-        let randomNumber = Math.floor(Math.random() * parsonWord.length);
-        getDefinition.innerHTML = parsonWord[randomNumber].definition;
+        randomizeCard();
          }    
 }
 function stopGame() {
