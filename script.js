@@ -28,36 +28,41 @@ const addTerm = (ev) => {
 }
     
 function randomizeCard() {
-    // Sets definiton for top card
     const term1 = document.querySelector("#term-one");
     const term2 = document.querySelector("#term-two");
     const term3 = document.querySelector("#term-three");
     const term4 = document.querySelector("#term-four");
+    // Sets definiton for top card
     const getDefinition = document.querySelector("#definition");
     storeTerms = JSON.parse(localStorage.getItem('gameCards'));
     const determinedNumber = Math.floor(Math.random() * storeTerms.length);
     const determinedDefinition = storeTerms[determinedNumber].definition;
-    getDefinition.innerHTML = determinedDefinition;
+    const determinedTerm = storeTerms[determinedNumber].term;
+    getDefinition.innerHTML = determinedTerm;
 
-    for (let i = 0; i < storeTerms; i++) {
-        let randomDefinition = storeTerms[randomNumber].definition;
-        
-    }
+    // for (let i = 0; i < storeTerms; i++) {
+    //     let randomDefinition = storeTerms[randomNumber].definition;
+    // }
 
     // Sets one random bottom term as the actual definition
+    
     let randomNumber = Math.floor(Math.random() * storeTerms.length);
-        
+            
     if (randomNumber == 0) {
         term1.innerHTML = determinedDefinition;
+        console.log(determinedDefinition)
     } 
     else if (randomNumber == 1) {
-        term2.innerHTML == determinedDefinition;
+        term2.innerHTML = determinedDefinition;
+        console.log(determinedDefinition)
     }
     else if (randomNumber == 2) {
-        term3.innerHTML == determinedDefinition;
-    }
-    else if (randomNumber == 3) {
-        term4.innerHTML == determinedDefinition;
+        term3.innerHTML = determinedDefinition;
+        console.log(determinedDefinition)
+    } 
+    else {
+        term4.innerHTML = determinedDefinition;
+        console.log(determinedDefinition);
     }
     
 }
@@ -74,7 +79,7 @@ function startGame() {
 }
 function stopGame() {
     let userStopGameInput = prompt('You will lose your progress and terms, "yes" or "no"');
-    if (userStopGameInput == 'yes') {
+    if (userStopGameInput == 'yes' || 'stop') {
         location.reload();
     } else if (userStopGameInput == 'no') {
         startGame();
