@@ -40,29 +40,45 @@ function randomizeCard() {
     const determinedTerm = storeTerms[determinedNumber].term;
     getDefinition.innerHTML = determinedTerm;
 
-    // for (let i = 0; i < storeTerms; i++) {
-    //     let randomDefinition = storeTerms[randomNumber].definition;
-    // }
+    // Gives all cards a definiton
+    for (let i = 0; i < storeTerms.length; i++) {
+        let definition = storeTerms.definition;
+        let insideRandom = Math.floor(Math.random() * storeTerms.length);
+        
+        
+        if (insideRandom == 0) {
+            term1.innerHTML = storeTerms[insideRandom].definition;
+            arrayNumbers.push(insideRandom);
+        }
+        else if (insideRandom == 1) {
+            term2.innerHTML = storeTerms[insideRandom].definition;
+            arrayNumbers.push(insideRandom);
+        }
+        else if (insideRandom == 2) {
+            term3.innerHTML = storeTerms[insideRandom].definition;
+            arrayNumbers.push(insideRandom);
+        }
+        else {
+            term4.innerHTML = storeTerms[3].definition;
+            arrayNumbers.push(insideRandom);
+        }
+    }
+
 
     // Sets one random bottom term as the actual definition
-    
     let randomNumber = Math.floor(Math.random() * storeTerms.length);
             
     if (randomNumber == 0) {
         term1.innerHTML = determinedDefinition;
-        console.log(determinedDefinition)
     } 
     else if (randomNumber == 1) {
         term2.innerHTML = determinedDefinition;
-        console.log(determinedDefinition)
     }
     else if (randomNumber == 2) {
         term3.innerHTML = determinedDefinition;
-        console.log(determinedDefinition)
     } 
     else {
         term4.innerHTML = determinedDefinition;
-        console.log(determinedDefinition);
     }
     
 }
