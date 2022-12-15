@@ -1,5 +1,6 @@
 // Get definition for top half of card
 let storeTerms = [];
+let correctTerms = [];
 
 const addTerm = (ev) => {
     ev.preventDefault();
@@ -25,27 +26,38 @@ const addTerm = (ev) => {
     
 
 }
-
-const term1 = document.querySelector("#term-one");
-const term2 = document.querySelector("#term-two");
-const term3 = document.querySelector("#term-three");
-const term4 = document.querySelector("#term-four");
-
+    
 function randomizeCard() {
+    // Sets definiton for top card
+    const term1 = document.querySelector("#term-one");
+    const term2 = document.querySelector("#term-two");
+    const term3 = document.querySelector("#term-three");
+    const term4 = document.querySelector("#term-four");
     const getDefinition = document.querySelector("#definition");
-    let parsonWord = JSON.parse(localStorage.getItem('gameCards'));
-    const determinedNumber = Math.floor(Math.random() * parsonWord.length);
-    const determinedDefinition = parsonWord[determinedNumber].definition;
+    storeTerms = JSON.parse(localStorage.getItem('gameCards'));
+    const determinedNumber = Math.floor(Math.random() * storeTerms.length);
+    const determinedDefinition = storeTerms[determinedNumber].definition;
     getDefinition.innerHTML = determinedDefinition;
 
-    for (let k = 0; k < parsonWord.length; k++) {
-        let randomNumber = Math.floor(Math.random() * parsonWord.length);
-        let randomDefinition = parsonWord[randomNumber].definition;
-        if (getDefinition.innerHTML != determinedDefinition) {
-            term[k].innerHTML = randomDefinition; //this would be a cool function
-        } else {
-            term[k].innerHTML = determinedDefinition;
-        }
+    for (let i = 0; i < storeTerms; i++) {
+        let randomDefinition = storeTerms[randomNumber].definition;
+        
+    }
+
+    // Sets one random bottom term as the actual definition
+    let randomNumber = Math.floor(Math.random() * storeTerms.length);
+        
+    if (randomNumber == 0) {
+        term1.innerHTML = determinedDefinition;
+    } 
+    else if (randomNumber == 1) {
+        term2.innerHTML == determinedDefinition;
+    }
+    else if (randomNumber == 2) {
+        term3.innerHTML == determinedDefinition;
+    }
+    else if (randomNumber == 3) {
+        term4.innerHTML == determinedDefinition;
     }
     
 }
