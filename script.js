@@ -1,6 +1,6 @@
 // Get definition for top half of card
 let storeTerms = [];
-let correctTerms = [];
+let correctDefinition = [];
 
 const addTerm = (ev) => {
     ev.preventDefault();
@@ -36,19 +36,24 @@ let getDefinition;
 let determinedNumber;
 let determinedDefinition;
 let determinedTerm;
-    
-function randomizeCard() {
-    term1 = document.querySelector("#term-one");
-    term2 = document.querySelector("#term-two");
-    term3 = document.querySelector("#term-three");
-    term4 = document.querySelector("#term-four");
-    // Sets definiton for top card
+
+// Sets definiton for top card
+function setTopCardDefinition() {
     getDefinition = document.querySelector("#definition");
     storeTerms = JSON.parse(localStorage.getItem('gameCards'));
     determinedNumber = Math.floor(Math.random() * storeTerms.length);
     determinedDefinition = storeTerms[determinedNumber].definition;
     determinedTerm = storeTerms[determinedNumber].term;
     getDefinition.innerHTML = determinedTerm;
+}
+    
+function randomizeCard() {
+    term1 = document.querySelector("#term-one");
+    term2 = document.querySelector("#term-two");
+    term3 = document.querySelector("#term-three");
+    term4 = document.querySelector("#term-four");
+
+    setTopCardDefinition();
 
     // Gives all cards a definiton
     arrayDefinition = [];
@@ -160,8 +165,12 @@ function randomizeCard() {
 
 function reloadGame() {
     let randomNumber = Math.floor(Math.random() * storeTerms.length);
+    setTopCardDefinition();
+
+    for (let h = 0; h < storeTerms.length; h++) {
+        if ()
+    }
     
-    debugger;
 }
 function startGame() {
     if (JSON.parse(localStorage.getItem('gameCards')).length < 4) {
