@@ -37,6 +37,8 @@ let determinedNumber;
 let determinedDefinition;
 let determinedTerm;
 
+let arrayNumbers;
+
 // Sets definiton for top card
 function setTopCardDefinition() {
     getDefinition = document.querySelector("#definition");
@@ -45,6 +47,68 @@ function setTopCardDefinition() {
     determinedDefinition = storeTerms[determinedNumber].definition;
     determinedTerm = storeTerms[determinedNumber].term;
     getDefinition.innerHTML = determinedTerm;
+}
+ // Gives all cards a definiton
+ function giveAllDefinittion() {
+    arrayDefinition = [];
+    arrayNumbers = [];
+    
+    let term1Switch = true;
+    let term2Switch = true;
+    let term3Switch = true;
+    let term4Switch = true;
+
+    for (let i = 0; i < storeTerms.length; i++) {
+        arrayDefinition.push(storeTerms[i].definition);
+    }
+
+    for (let j = 0; j < 20; j++) {
+        let insideRandom = Math.floor(Math.random() * storeTerms.length);
+
+        if (arrayNumbers.indexOf(insideRandom) == -1) {
+            if (term1Switch == true) {
+                term1.innerHTML = arrayDefinition[insideRandom];
+                arrayNumbers.push(insideRandom);
+                term1Switch = false;
+            }
+            else if (term2Switch == true) {
+                term2.innerHTML = arrayDefinition[insideRandom];
+                arrayNumbers.push(insideRandom);
+                term2Switch = false;
+            }
+            else if (term3Switch == true) {
+                term3.innerHTML = arrayDefinition[insideRandom];
+                arrayNumbers.push(insideRandom);
+                term3Switch = false;
+            }
+            else if (term4Switch == true) {
+                term4.innerHTML = arrayDefinition[insideRandom];
+                arrayNumbers.push(insideRandom);
+                term4Switch = false;
+            }
+
+        }
+
+    }
+}
+
+// Sets one random bottom term as the actual definition if false
+let randomNumber;
+function randomBottom() {
+    randomNumber = Math.floor(Math.random() * storeTerms.length);
+            
+    if (randomNumber == 0) {
+        term1.innerHTML = determinedDefinition;
+    } 
+    else if (randomNumber == 1) {
+        term2.innerHTML = determinedDefinition;
+    }
+    else if (randomNumber == 2) {
+        term3.innerHTML = determinedDefinition;
+    } 
+    else if (randomNumber ==3) {
+        term4.innerHTML = determinedDefinition;
+    }
 }
     
 function randomizeCard() {
@@ -55,46 +119,11 @@ function randomizeCard() {
 
     setTopCardDefinition();
 
-    // Gives all cards a definiton
-    arrayDefinition = [];
-    let arrayNumbers = [];
-    
-    for (let i = 0; i < storeTerms.length; i++) {
-        arrayDefinition.push(storeTerms[i].definition);
-    }
+    giveAllDefinittion();
 
-    for (let j = 0; j < 20; j++) {
-        let insideRandom = Math.floor(Math.random() * storeTerms.length);
-        
-        if (arrayNumbers.indexOf(insideRandom) == -1) {
-            if (term1.innerHTML == 'term1') {
-                term1.innerHTML = arrayDefinition[insideRandom];
-                indexOfNumber = arrayDefinition.indexOf(arrayDefinition[insideRandom]);
-                arrayNumbers.push(insideRandom);
-            }
-            else if (term2.innerHTML == 'term2') {
-                term2.innerHTML = arrayDefinition[insideRandom];
-                indexOfNumber = arrayDefinition.indexOf(arrayDefinition[insideRandom]);
-                arrayNumbers.push(insideRandom);
-            }
-            else if (term3.innerHTML == 'term3') {
-                term3.innerHTML = arrayDefinition[insideRandom];
-                indexOfNumber = arrayDefinition.indexOf(arrayDefinition[insideRandom]);
-                arrayNumbers.push(insideRandom);
-            }
-            else if (term4.innerHTML == 'term4') {
-                term4.innerHTML = arrayDefinition[insideRandom];
-                indexOfNumber = arrayDefinition.indexOf(arrayDefinition[insideRandom]);
-                arrayNumbers.push(insideRandom);
-            }
-
-        }
-    
-    }
-
-    // Checks if the actual term is in the cards
+    // Checks if the actual term is in the cards // 
     let randomBottomSwitch = false;
-    for (let t = 0; t < storeTerms.length * 5; t++) {
+    for (let t = 0; t < storeTerms.length; t++) {
         if (determinedDefinition == arrayDefinition[arrayNumbers[t]]) {
             randomBottomSwitch = true;
         } 
@@ -107,23 +136,6 @@ function randomizeCard() {
      else {
         randomBottom();
      }
-     let randomNumber;
-     function randomBottom() {
-        randomNumber = Math.floor(Math.random() * storeTerms.length);
-                
-        if (randomNumber == 0) {
-            term1.innerHTML = determinedDefinition;
-        } 
-        else if (randomNumber == 1) {
-            term2.innerHTML = determinedDefinition;
-        }
-        else if (randomNumber == 2) {
-            term3.innerHTML = determinedDefinition;
-        } 
-        else if (randomNumber ==3) {
-            term4.innerHTML = determinedDefinition;
-        }
-    }
 
     // Check to equal the definition with term
     term1.addEventListener('click', function() {
@@ -163,27 +175,27 @@ function randomizeCard() {
     
 }
 
+
 function reloadGame() {
     let randomNumber = Math.floor(Math.random() * storeTerms.length);
     setTopCardDefinition();
 
-    let stopFalse = false;
-    while (stopFalse == true) {
+    let stopThisTrue = true;
+    while (stopThisTrue == true) {
         for (let h = 0; h < storeTerms.length; h++) {
             if (determinedTerm.indexOf(determinedTerm[h]) == 1) {
                 setTopCardDefinition();
+                stopThisTrue = true;
             }
             else {
-                stopFalse = true;
+                stopThisTrue = false;
+                randomizeCard();
+                // giveAllDefinittion();
+                // randomBottom();
             }
         }
-    }
-
-
-    
+    }   
 }
-
-debugger;
 
 function startGame() {
     if (JSON.parse(localStorage.getItem('gameCards')).length < 4) {
