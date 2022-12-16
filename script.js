@@ -26,12 +26,16 @@ const addTerm = (ev) => {
     
 
 }
+let term1;
+let term2;
+let term3;
+let term4;
     
 function randomizeCard() {
-    const term1 = document.querySelector("#term-one");
-    const term2 = document.querySelector("#term-two");
-    const term3 = document.querySelector("#term-three");
-    const term4 = document.querySelector("#term-four");
+    term1 = document.querySelector("#term-one");
+    term2 = document.querySelector("#term-two");
+    term3 = document.querySelector("#term-three");
+    term4 = document.querySelector("#term-four");
     // Sets definiton for top card
     const getDefinition = document.querySelector("#definition");
     storeTerms = JSON.parse(localStorage.getItem('gameCards'));
@@ -47,6 +51,7 @@ function randomizeCard() {
     for (let i = 0; i < storeTerms.length; i++) {
         arrayDefinition.push(storeTerms[i].definition);
     }
+
     for (let j = 0; j < 20; j++) {
         let insideRandom = Math.floor(Math.random() * storeTerms.length);
         
@@ -72,7 +77,7 @@ function randomizeCard() {
                 arrayNumbers.push(insideRandom);
             }
 
-    }
+        }
     
     }
 
@@ -91,9 +96,9 @@ function randomizeCard() {
      else {
         randomBottom();
      }
-
+     let randomNumber;
      function randomBottom() {
-        let randomNumber = Math.floor(Math.random() * storeTerms.length);
+        randomNumber = Math.floor(Math.random() * storeTerms.length);
                 
         if (randomNumber == 0) {
             term1.innerHTML = determinedDefinition;
@@ -109,6 +114,39 @@ function randomizeCard() {
         }
     }
 
+    // Check to equal the definition with term
+    term1.addEventListener('click', function() {
+        checkIfEquals(term1.innerHTML);
+    });
+    term2.addEventListener('click', function() {
+        checkIfEquals(term2.innerHTML)
+    });
+    term3.addEventListener('click', function() {
+        checkIfEquals(term3.innerHTML)
+    });
+    term4.addEventListener('click', function() {
+        checkIfEquals(term4.innerHTML)
+    });
+
+    function checkIfEquals(wordGiven) {
+        if (determinedDefinition == wordGiven) {
+            correctTerms.push(determinedDefinition);
+            alert('correct!');
+        }
+        else {
+            if (randomNumber == 0) {
+                alert('close!');
+            }
+            if (randomNumber == 1) {
+                alert('try again!');
+            }
+            else {
+                alert('almost there!');
+            }
+            
+        }
+    }
+
     
     
 }
@@ -121,6 +159,7 @@ function startGame() {
         stopBtn.style.display = "block";
         // function for randomizing terms
         randomizeCard();
+
          }    
 }
 function stopGame() {
@@ -140,7 +179,7 @@ function clearEverything() {
 
 
 
-window.onload = () => {
+window.onload=function() {
     // start game
     let readyBtn = document.getElementById("readyBtn");
     readyBtn.addEventListener('click', startGame); //remove the button when game starts or change it to stop game // alert stopping the game will remove all your terms
@@ -160,3 +199,8 @@ window.onload = () => {
 // Have each as a number so to get one term it would be 3.term
 // Have a correct and wrong box / array. Move them into those if correct or even have 2 sets of correctness. One for getting it right, another for writing the term and getting it right
 // Have a override i was correct button
+
+// const term1 = document.querySelector("#term-one");
+//     const term2 = document.querySelector("#term-two");
+//     const term3 = document.querySelector("#term-three");
+//     const term4 = document.querySelector("#term-four");
