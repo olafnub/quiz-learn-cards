@@ -41,27 +41,43 @@ function randomizeCard() {
     getDefinition.innerHTML = determinedTerm;
 
     // Gives all cards a definiton
+    let arrayDefinition = [];
+    let arrayNumbers = [];
+    let indexOfNumber;
     for (let i = 0; i < storeTerms.length; i++) {
-        let definition = storeTerms.definition;
+        arrayDefinition.push(storeTerms[i].definition);
+    }
+    for (let j = 0; j < 20; j++) {
         let insideRandom = Math.floor(Math.random() * storeTerms.length);
         
+        if (arrayNumbers.indexOf(insideRandom) == -1) {
+        if (term1.innerHTML == 'term1') {
+            term1.innerHTML = arrayDefinition[insideRandom];
+            indexOfNumber = arrayDefinition.indexOf(arrayDefinition[insideRandom]);
+            // arrayDefinition.splice(indexOfNumber, 1);
+            arrayNumbers.push(insideRandom);
+        }
+        else if (term2.innerHTML == 'term2') {
+            term2.innerHTML = arrayDefinition[insideRandom];
+            indexOfNumber = arrayDefinition.indexOf(arrayDefinition[insideRandom]);
+            // arrayDefinition.splice(indexOfNumber, 1);
+            arrayNumbers.push(insideRandom);
+        }
+        else if (term3.innerHTML == 'term3') {
+            term3.innerHTML = arrayDefinition[insideRandom];
+            indexOfNumber = arrayDefinition.indexOf(arrayDefinition[insideRandom]);
+            // arrayDefinition.splice(indexOfNumber, 1);
+            arrayNumbers.push(insideRandom);
+        }
+        else if (term4.innerHTML == 'term4') {
+            term4.innerHTML = arrayDefinition[insideRandom];
+            indexOfNumber = arrayDefinition.indexOf(arrayDefinition[insideRandom]);
+            // arrayDefinition.splice(indexOfNumber, 1);
+            arrayNumbers.push(insideRandom);
+        }
+
+    }
         
-        if (insideRandom == 0) {
-            term1.innerHTML = storeTerms[insideRandom].definition;
-            arrayNumbers.push(insideRandom);
-        }
-        else if (insideRandom == 1) {
-            term2.innerHTML = storeTerms[insideRandom].definition;
-            arrayNumbers.push(insideRandom);
-        }
-        else if (insideRandom == 2) {
-            term3.innerHTML = storeTerms[insideRandom].definition;
-            arrayNumbers.push(insideRandom);
-        }
-        else {
-            term4.innerHTML = storeTerms[3].definition;
-            arrayNumbers.push(insideRandom);
-        }
     }
 
 
@@ -77,7 +93,7 @@ function randomizeCard() {
     else if (randomNumber == 2) {
         term3.innerHTML = determinedDefinition;
     } 
-    else {
+    else if (randomNumber ==3) {
         term4.innerHTML = determinedDefinition;
     }
     
