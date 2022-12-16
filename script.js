@@ -43,7 +43,7 @@ function randomizeCard() {
     // Gives all cards a definiton
     let arrayDefinition = [];
     let arrayNumbers = [];
-    let indexOfNumber;
+    
     for (let i = 0; i < storeTerms.length; i++) {
         arrayDefinition.push(storeTerms[i].definition);
     }
@@ -51,51 +51,65 @@ function randomizeCard() {
         let insideRandom = Math.floor(Math.random() * storeTerms.length);
         
         if (arrayNumbers.indexOf(insideRandom) == -1) {
-        if (term1.innerHTML == 'term1') {
-            term1.innerHTML = arrayDefinition[insideRandom];
-            indexOfNumber = arrayDefinition.indexOf(arrayDefinition[insideRandom]);
-            // arrayDefinition.splice(indexOfNumber, 1);
-            arrayNumbers.push(insideRandom);
-        }
-        else if (term2.innerHTML == 'term2') {
-            term2.innerHTML = arrayDefinition[insideRandom];
-            indexOfNumber = arrayDefinition.indexOf(arrayDefinition[insideRandom]);
-            // arrayDefinition.splice(indexOfNumber, 1);
-            arrayNumbers.push(insideRandom);
-        }
-        else if (term3.innerHTML == 'term3') {
-            term3.innerHTML = arrayDefinition[insideRandom];
-            indexOfNumber = arrayDefinition.indexOf(arrayDefinition[insideRandom]);
-            // arrayDefinition.splice(indexOfNumber, 1);
-            arrayNumbers.push(insideRandom);
-        }
-        else if (term4.innerHTML == 'term4') {
-            term4.innerHTML = arrayDefinition[insideRandom];
-            indexOfNumber = arrayDefinition.indexOf(arrayDefinition[insideRandom]);
-            // arrayDefinition.splice(indexOfNumber, 1);
-            arrayNumbers.push(insideRandom);
-        }
+            if (term1.innerHTML == 'term1') {
+                term1.innerHTML = arrayDefinition[insideRandom];
+                indexOfNumber = arrayDefinition.indexOf(arrayDefinition[insideRandom]);
+                arrayNumbers.push(insideRandom);
+            }
+            else if (term2.innerHTML == 'term2') {
+                term2.innerHTML = arrayDefinition[insideRandom];
+                indexOfNumber = arrayDefinition.indexOf(arrayDefinition[insideRandom]);
+                arrayNumbers.push(insideRandom);
+            }
+            else if (term3.innerHTML == 'term3') {
+                term3.innerHTML = arrayDefinition[insideRandom];
+                indexOfNumber = arrayDefinition.indexOf(arrayDefinition[insideRandom]);
+                arrayNumbers.push(insideRandom);
+            }
+            else if (term4.innerHTML == 'term4') {
+                term4.innerHTML = arrayDefinition[insideRandom];
+                indexOfNumber = arrayDefinition.indexOf(arrayDefinition[insideRandom]);
+                arrayNumbers.push(insideRandom);
+            }
 
     }
+    
+    }
+
+    // Checks if the actual term is in the cards
+    let randomBottomSwitch = false;
+    for (let t = 0; t < storeTerms.length * 5; t++) {
+        if (determinedDefinition == arrayDefinition[arrayNumbers[t]]) {
+            randomBottomSwitch = true;
+        } 
         
     }
+     // Sets one random bottom term as the actual definition if false
+     if (randomBottomSwitch == true) {
+        
+     }
+     else {
+        randomBottom();
+     }
 
+     function randomBottom() {
+        let randomNumber = Math.floor(Math.random() * storeTerms.length);
+                
+        if (randomNumber == 0) {
+            term1.innerHTML = determinedDefinition;
+        } 
+        else if (randomNumber == 1) {
+            term2.innerHTML = determinedDefinition;
+        }
+        else if (randomNumber == 2) {
+            term3.innerHTML = determinedDefinition;
+        } 
+        else if (randomNumber ==3) {
+            term4.innerHTML = determinedDefinition;
+        }
+    }
 
-    // Sets one random bottom term as the actual definition
-    let randomNumber = Math.floor(Math.random() * storeTerms.length);
-            
-    if (randomNumber == 0) {
-        term1.innerHTML = determinedDefinition;
-    } 
-    else if (randomNumber == 1) {
-        term2.innerHTML = determinedDefinition;
-    }
-    else if (randomNumber == 2) {
-        term3.innerHTML = determinedDefinition;
-    } 
-    else if (randomNumber ==3) {
-        term4.innerHTML = determinedDefinition;
-    }
+    
     
 }
 function startGame() {
