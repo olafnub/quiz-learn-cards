@@ -30,6 +30,12 @@ let term1;
 let term2;
 let term3;
 let term4;
+
+let arrayDefinition;
+let getDefinition;
+let determinedNumber;
+let determinedDefinition;
+let determinedTerm;
     
 function randomizeCard() {
     term1 = document.querySelector("#term-one");
@@ -37,15 +43,15 @@ function randomizeCard() {
     term3 = document.querySelector("#term-three");
     term4 = document.querySelector("#term-four");
     // Sets definiton for top card
-    const getDefinition = document.querySelector("#definition");
+    getDefinition = document.querySelector("#definition");
     storeTerms = JSON.parse(localStorage.getItem('gameCards'));
-    const determinedNumber = Math.floor(Math.random() * storeTerms.length);
-    const determinedDefinition = storeTerms[determinedNumber].definition;
-    const determinedTerm = storeTerms[determinedNumber].term;
+    determinedNumber = Math.floor(Math.random() * storeTerms.length);
+    determinedDefinition = storeTerms[determinedNumber].definition;
+    determinedTerm = storeTerms[determinedNumber].term;
     getDefinition.innerHTML = determinedTerm;
 
     // Gives all cards a definiton
-    let arrayDefinition = [];
+    arrayDefinition = [];
     let arrayNumbers = [];
     
     for (let i = 0; i < storeTerms.length; i++) {
@@ -132,6 +138,7 @@ function randomizeCard() {
         if (determinedDefinition == wordGiven) {
             correctTerms.push(determinedDefinition);
             alert('correct!');
+            reloadGame();
         }
         else {
             if (randomNumber == 0) {
@@ -150,6 +157,12 @@ function randomizeCard() {
     
     
 }
+
+function reloadGame() {
+    let randomNumber = Math.floor(Math.random() * storeTerms.length);
+    
+    debugger;
+}
 function startGame() {
     if (JSON.parse(localStorage.getItem('gameCards')).length < 4) {
         alert('You have less than 4 terms');
@@ -158,8 +171,7 @@ function startGame() {
         readyBtn.style.display = "none";
         stopBtn.style.display = "block";
         // function for randomizing terms
-        randomizeCard();
-
+            randomizeCard();
          }    
 }
 function stopGame() {
