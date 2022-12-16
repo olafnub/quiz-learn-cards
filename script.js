@@ -1,6 +1,6 @@
 // Get definition for top half of card
 let storeTerms = [];
-let correctDefinition = [];
+let correctTerms = [];
 
 const addTerm = (ev) => {
     ev.preventDefault();
@@ -141,7 +141,7 @@ function randomizeCard() {
 
     function checkIfEquals(wordGiven) {
         if (determinedDefinition == wordGiven) {
-            correctTerms.push(determinedDefinition);
+            correctTerms.push(determinedTerm);
             alert('correct!');
             reloadGame();
         }
@@ -167,11 +167,24 @@ function reloadGame() {
     let randomNumber = Math.floor(Math.random() * storeTerms.length);
     setTopCardDefinition();
 
-    for (let h = 0; h < storeTerms.length; h++) {
-        if ()
+    let stopFalse = false;
+    while (stopFalse == true) {
+        for (let h = 0; h < storeTerms.length; h++) {
+            if (determinedTerm.indexOf(determinedTerm[h]) == 1) {
+                setTopCardDefinition();
+            }
+            else {
+                stopFalse = true;
+            }
+        }
     }
+
+
     
 }
+
+debugger;
+
 function startGame() {
     if (JSON.parse(localStorage.getItem('gameCards')).length < 4) {
         alert('You have less than 4 terms');
