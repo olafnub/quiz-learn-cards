@@ -4,8 +4,8 @@ Welcome! This website provides <em>how to study</em> more effectively (unless yo
 At the end of the website, there's a flash card game you can use to study for terms. 
 
 ## How the game works
-Type in your terms and definitions. And at the end you can start the game. Once the game is running, you will be given random terms and definitions and you'll have
-to match whatever term card you have ontop to your bottom card definitions!<br> "Stop" will stop your game but you'll still be able to have your terms and definitions. In order to reset <strong>everything</strong> click the "clear all" button on the bottom near the log.
+Type in all your terms and definitions then start the game! 
+Wnce the game is running, you will be given random terms and definitions and and your job is to match whatever term card you have ontop to whatever definition card you have on the bottom<br> If you want to exit, "Stop" will stop your game, but you'll still be able to have your terms and definitions previously. If you want to reset <strong>everything</strong>, then click the "clear all" button on the bottom to reset all terms and definitions.
 
 
 ## Easter Eggs
