@@ -93,10 +93,9 @@ function setTopCardDefinition() {
 }
 
 // Sets one random bottom term as the actual definition if false
-let randomNumber;
+let randomNumber = Math.floor(Math.random() * storeTerms.length);
 function randomBottom() {
-    randomNumber = Math.floor(Math.random() * storeTerms.length);
-            
+
     if (randomNumber == 0) {
         term1.innerHTML = determinedDefinition;
     } 
@@ -138,63 +137,87 @@ function randomizeCard() {
      }
 
     // Check to equal the definition with term
-    term1.addEventListener('click', function() {
-        checkIfEquals(term1.innerHTML);
-    });
-    term2.addEventListener('click', function() {
-        checkIfEquals(term2.innerHTML)
-    });
-    term3.addEventListener('click', function() {
-        checkIfEquals(term3.innerHTML)
-    });
-    term4.addEventListener('click', function() {
-        checkIfEquals(term4.innerHTML)
-    });
+    checkCards();
+    
+}
+
+let listenerCount = 0;
+function checkCards() {
+
+    if (listenerCount == 0) {
+        term1.addEventListener('click', function() {
+            checkIfEquals(term1.innerHTML);
+        });
+        term2.addEventListener('click', function() {
+            checkIfEquals(term2.innerHTML)
+        });
+        term3.addEventListener('click', function() {
+            checkIfEquals(term3.innerHTML)
+        });
+        term4.addEventListener('click', function() {
+            checkIfEquals(term4.innerHTML)
+        });
+    }
 
     function checkIfEquals(wordGiven) {
         if (determinedDefinition == wordGiven) {
             correctTerms.push(determinedTerm);
             alert('correct!');
+            listenerCount = 1;
             reloadGame();
         }
         else {
-            if (randomNumber == 0) {
-                alert('close!');
-            }
-            if (randomNumber == 1) {
-                alert('try again!');
-            }
-            else {
-                alert('almost there!');
-            }
+            // if (randomNumber == 0) {
+            //     alert('close!');
+            // }
+            // else if (randomNumber == 1) {
+            //     alert('try again!');
+            // }
+            // else {
+            //     alert('almost there!');
+            // }
+            alert('hi');
             
         }
     }
 
-    
-    
 }
 
 
 function reloadGame() {
-    let randomNumber = Math.floor(Math.random() * storeTerms.length);
     setTopCardDefinition();
 
-    let stopThisTrue = true;
-    while (stopThisTrue == true) {
-        for (let h = 0; h < storeTerms.length; h++) {
-            if (determinedTerm.indexOf(determinedTerm[h]) == 1) {
-                setTopCardDefinition();
-                stopThisTrue = true;
-            }
-            else {
-                stopThisTrue = false;
-                randomizeCard();
-                // giveAllDefinittion();
-                // randomBottom();
-            }
-        }
-    }   
+    let runThisCode = true;
+    for (let a = 0; a <correctTerms.length; a++) {
+        if (determinedDefinition.indexOf(correctTerms[a]) == 1) {
+            setTopCardDefinition();
+            runThisCode = false;
+        } 
+    }
+
+    if (runThisCode == true) {
+        randomizeCard();
+    }
+
+
+
+
+    // let stopThisTrue = true;
+    // let amount = 0;
+    // while (stopThisTrue == true) {
+    //         if (determinedTerm.indexOf(correctTerms[amount]) == 1) {
+    //             setTopCardDefinition();
+    //             stopThisTrue = true;
+    //             console.log(correctTerms);
+    //         }
+    //         else {
+    //             stopThisTrue = false;
+    //             randomizeCard();
+    //             // giveAllDefinittion();
+    //             // randomBottom();
+    //         }
+        
+    // }  
 }
 
 function startGame() {
