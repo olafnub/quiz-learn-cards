@@ -4,6 +4,7 @@ let correctTerms = [];
 let numbersGiven = 0;
 let storeUserInput; // title
 let secondTimeUser;
+let titlesList;
 
 function storeUserValue() {
     storeUserInput = listOfCards.value;
@@ -290,7 +291,15 @@ window.onload=function() {
     document.getElementById("createButton").addEventListener('click', addTerm);
     let listOfCards = document.getElementById("listOfCards");
     listOfCards.addEventListener("change", storeUserValue);
+    titlesList = document.querySelector("#listOfTitles pre");
 
+if (localStorage.length > 0) {
+
+    for (let jw = 0; jw < localStorage.length; jw++) {
+        titlesList.textContent += localStorage.key(jw) + "\n";
+    }
+
+}
         
 }
 
