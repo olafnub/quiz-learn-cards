@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chapter 12</title>
+    <title>Card Game</title>
     <link rel="stylesheet" href="cardgame.css">
     <script src="script.js"></script>
 </head>
@@ -36,8 +36,13 @@
     </div>
     
     <div class="cardTwo">
-        <label for="listOfCards"></label>
+        <div class="sectionTop">
+            <p>Enter title of what you want to play or create new one</p>
+            <label for="listOfCards"></label>
             <input type="text" id="listOfCards" placeholder="title">
+        </div>
+
+        
         <form autocomplete="off" name="vocabulary">
             <label for="fterm">Enter your vocab</label>
                 <input type="text" id="fterm" placeholder="term">
@@ -52,6 +57,12 @@
             </div>
         </div>
     </div>
+
+    <div id="listOfTitles">
+        <strong>Titles you have saved</strong>
+        <pre></pre>
+    </div>
+
 
 </body>
 </html>

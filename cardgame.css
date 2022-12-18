@@ -1,8 +1,9 @@
 body {
     background-color:#202124;
     display: flex;
+    /* display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: center; */
     flex-direction: column;
     height: auto;
 }
@@ -14,6 +15,7 @@ body {
     color: #d2cccc;
     width: 600px;
     height: 400px;
+    align-self: center;
 }
 .card p, .card h2 {
     margin-left: 10px;
@@ -49,20 +51,33 @@ body {
     border: 1px solid gray;
     color: white;
 }
+
+
 .cardTwo form {
-    margin-top: 80px;
+    /* margin-top: 80px;
     padding: 10px;
     color: white;
     border: 2px solid black;
     border-top: 2px solid red;
     border-bottom: 2px solid brown;
     border-right: 2px solid orange;
-    border-left: 2px solid green;
+    border-left: 2px solid green; */
 }
 .cardTwo {
     color: white;
     border: 1px solid green;
     height: 500px;
+}
+.sectionTop {
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    gap: 3px;
+}
+#listOfCards {
+
+    width: 200px;
+    height: 20px
 }
 #createButton, #clearLog {
     color: white;
@@ -76,4 +91,9 @@ body {
     display:flex;
     align-items: center;
     gap: 10px;
+}
+#listOfTitles {
+    border: 1px solid red;
+    color: #1eca1e;
+    
 }
