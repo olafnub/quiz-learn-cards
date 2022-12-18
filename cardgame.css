@@ -55,9 +55,10 @@ body {
 }
 .sectionTop {
     display: flex;
-    /* justify-content: center; */
     align-items: center;
     gap: 3px;
+    /* border: 1px solid white; */
+    
 }
 #listOfCards {
 
@@ -85,5 +86,10 @@ body {
 @media only screen and (max-width: 400px) {
     .card {        /* display: flex; */
         width: 390px;
+    }
+    .sectionTop {
+        display: flex;
+        gap: 0px;
+        /* margin: 10px; */
     }
 }
