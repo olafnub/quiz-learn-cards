@@ -36,27 +36,37 @@
     </div>
     
     <div class="cardTwo">
+        <h2>Add Sets</h2>
         <div class="sectionTop">
-            <p>Enter title of what you want to play or create a new one</p>
-            <label for="listOfCards"></label>
-            <input type="text" id="listOfCards" placeholder="title">
-        </div>
-
-        
-        <form autocomplete="off" name="vocabulary">
-            <label for="fterm">Enter your vocab</label>
-                <input type="text" id="fterm" placeholder="term">
-                <input type="text" id="fdefi" placeholder="definition">
-                <button id="createButton">Sumbit</button>
-        </form>
-        <div class="termLog">
-            <h2>Terms Log</h2>
-            <button id="clearLog">Clear ALL</button>
-            <div id="termsAdded">
-                <pre></pre>
+            <label for="listOfCards">Enter title of what you want to play or create a new one</label>
+            <div class="seperateLabelInput">
+                <input type="text" id="listOfCards" placeholder="title">
             </div>
         </div>
+
+        <div class="termBox">
+            <form autocomplete="off" name="vocabulary">
+                <label for="fterm">Enter your vocab</label>
+                <div class="seperateLabelInput">
+                    <input type="text" id="fterm" placeholder="term">
+                </div>
+                    <div class="bottomTermBox">
+                        <input type="text" id="fdefi" placeholder="definition">
+                        <button id="createButton">Sumbit</button>
+                    </div>
+            </form>
+        </div>
+        <h2>Terms Log</h2>
+        <div class="termLog">
+            <button id="clearLog">Clear ALL</button>
+            <p>Only clear if you want to reset <strong>EVERYTHING</strong>
+            <em>all card sets will be deleted</em></p>
+        </div>
+        <div id="termsAdded">
+            <pre></pre>
+        </div>
     </div>
+    
 
     <div id="listOfTitles">
         <strong>Titles you have saved</strong>
