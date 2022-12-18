@@ -1,13 +1,9 @@
 body {
     background-color:#202124;
     display: flex;
-    /* display: flex;
-    justify-content: center;
-    align-items: center; */
     flex-direction: column;
     height: auto;
 }
-
 .card {
     display: flex;
     flex-direction: column;
@@ -52,17 +48,6 @@ body {
     color: white;
 }
 
-
-.cardTwo form {
-    /* margin-top: 80px;
-    padding: 10px;
-    color: white;
-    border: 2px solid black;
-    border-top: 2px solid red;
-    border-bottom: 2px solid brown;
-    border-right: 2px solid orange;
-    border-left: 2px solid green; */
-}
 .cardTwo {
     color: white;
     border: 1px solid green;
@@ -96,4 +81,9 @@ body {
     border: 1px solid red;
     color: #1eca1e;
     
+}
+@media only screen and (max-width: 400px) {
+    .card {        /* display: flex; */
+        width: 390px;
+    }
 }
