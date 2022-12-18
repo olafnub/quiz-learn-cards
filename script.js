@@ -1,43 +1,32 @@
 // Get definition for top half of card
 let storeTerms = [];
 let correctTerms = [];
-let gameCards = [];
-let keyedStorage = [];
-let numberGiven = 0;
-let gameCardsUserInput;
+let numbersGiven = 0;
+let storeUserInput; // title
+let secondTimeUser;
 
+function storeUserValue() {
+    storeUserInput = listOfCards.value;
+}
 
 function addGameCards() {
 // Goal is to add a title that isn't already in local Storage. If it is then keep the .value as that title unless it's
-    gameCardsUserInput = document.getElementById("listOfCards");
-    
-    keyedStorage.push(gameCardsUserInput.value);
-    gameCardsUserInput.disabled = true;
-
-    let giveDefinition = true;
+    let toAddTitle = true;
     if (localStorage.length != 0) {
-        for (let j = 0; j < localStorage.length+1; j++) {
-            if (localStorage.key(j).indexOf(keyedStorage) == -1 || localStorage.key(j).indexOf(keyedStorage) == null) {
-                giveDefinition = true;
-                numberGiven = j;
+        for (let j = 0; j < localStorage.length; j++) {
+            if (storeUserInput.indexOf(localStorage.key(j)) != 0) {
+                toAddTitle = false;
             }
             else {
-                giveDefinition = false;
-                gameCardsUserInput.value = keyedStorage[j];
-                numberGiven = j;
-                break;
+                addOrDont = true;
             }
         }
-        if (giveDefinition == true) {
-            gameCards.push(keyedStorage[numberGiven]);
-        }
     }
-    else {
-        if (giveDefinition == true) {
-            gameCards.push(keyedStorage[numberGiven]);
-        }
-    }
-    debugger;
+    
+    if (toAddTitle == true) {
+        localStorage.setItem(storeUserInput, JSON.stringify(storeTerms)); 
+    }  
+
 }
 
 const addTerm = (ev) => {
@@ -56,9 +45,11 @@ const addTerm = (ev) => {
         storeTerms.push(addTerms);
         let logUserInput = document.querySelector("#termsAdded pre");
         logUserInput.textContent += addTerms.term + " has been added\n";
+        // $('#vocabulary').forms[0].reset();
+        let vocabForm = document.getElementsByName("vocabulary")[0];
+        vocabForm.reset();
         addGameCards();
-        localStorage.setItem(gameCards[numberGiven], JSON.stringify(storeTerms));
-        document.forms[0].reset();
+        
     }
     
     
@@ -80,7 +71,7 @@ let arrayNumbers;
 // Sets definiton for top card
 function setTopCardDefinition() {
     getDefinition = document.querySelector("#definition");
-    storeTerms = JSON.parse(localStorage.getItem(gameCards[numberGiven]));
+    storeTerms = JSON.parse(localStorage.getItem(storeUserInput));
     determinedNumber = Math.floor(Math.random() * storeTerms.length);
     determinedDefinition = storeTerms[determinedNumber].definition;
     determinedTerm = storeTerms[determinedNumber].term;
@@ -214,7 +205,7 @@ function checkCards() {
             // else {
             //     alert('almost there!');
             // }
-            alert('hi');
+            alert('try again, you got this!');
             
         }
     }
@@ -259,7 +250,7 @@ function reloadGame() {
 }
 
 function startGame() {
-    if (JSON.parse(localStorage.getItem(gameCardsUserInput)).length < 4) {
+    if (JSON.parse(localStorage.getItem(storeUserInput)).length < 4) {
         alert('You have less than 4 terms');
         } 
     else {
@@ -297,6 +288,9 @@ window.onload=function() {
 
     // Submit form button
     document.getElementById("createButton").addEventListener('click', addTerm);
+    let listOfCards = document.getElementById("listOfCards");
+    listOfCards.addEventListener("change", storeUserValue);
+
         
 }
 
