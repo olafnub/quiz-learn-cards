@@ -83,7 +83,7 @@ body {
     color: #1eca1e;
     
 }
-@media only screen and (max-width: 400px) {
+@media only screen and (max-width: 480px) {
     .card {        /* display: flex; */
         width: 390px;
     }
