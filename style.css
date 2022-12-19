@@ -2,3 +2,6 @@ img {
     width: 370px;
     height: 250px;
 }
+body {
+    padding: 3px;
+}
