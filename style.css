@@ -1,9 +1,4 @@
-@media screen and (max-width: 430px) {
-    *{
-        /* margin: 0 auto; */
-    }
-    img {
-        width: 370px;
-        height: 400px;
-    }
+img {
+    width: 370px;
+    height: 250px;
 }
