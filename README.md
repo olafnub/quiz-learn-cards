@@ -7,6 +7,13 @@ At the end of the website, there's a flash card game you can use to study for te
 Type in all your terms and definitions then start the game! 
 Wnce the game is running, you will be given random terms and definitions and and your job is to match whatever term card you have ontop to whatever definition card you have on the bottom<br> If you want to exit, "Stop" will stop your game, but you'll still be able to have your terms and definitions previously. If you want to reset <strong>everything</strong>, then click the "clear all" button on the bottom to reset all terms and definitions.
 
+## Link to Website
+https://olafnub.github.io/quiz-learn-cards/
+## Link to Game
+https://olafnub.github.io/quiz-learn-cards/cardgame.html
+## Explanation on how the game works
+https://youtu.be/-T24pAZfkZ4
+
 
 ## Easter Eggs
 In one of the last problems I had to solve for this project to be done, my alert would alert "correct!" and also "try again" at the same time when I clicked the terms during my second round/game. I had a hard time trying to figure out what the problem was. And searched lots on google and moved around things in my code. I knew I shoud've just tested the code with a replica example on a <a href="https://jsfiddle.net/">code testing website</a> but I kept pushing it back because that meant I had to replicate everything and do more work-- and I didn't want to do that. Finally, after many tries (and my gf not responding to my texts) I decided to give it a try on a tester. Luckily I found the answer when I was playing around with the tester, and realized my code would essentially run the "click" twice instead of once during the second round of game. It would run twice because the "click" would run again ontop of the first time it was executed. And so when second round came, and I pressed a button, the website would pop up "correct" and also "try again!" even though I clicked the right answer. 
