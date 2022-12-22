@@ -1,34 +1,12 @@
 // Get definition for top half of card
 let storeTerms = [];
 let correctTerms = [];
+let arrayOfTitles = [];
 let numbersGiven = 0;
 let storeUserInput; // title
 let secondTimeUser;
 let titlesList;
-
-function storeUserValue() {
-    storeUserInput = listOfCards.value;
-}
-
-function addGameCards() {
-// Goal is to add a title that isn't already in local Storage. If it is then keep the .value as that title unless it's
-    let toAddTitle = true;
-    if (localStorage.length != 0) {
-        for (let j = 0; j < localStorage.length; j++) {
-            if (storeUserInput.indexOf(localStorage.key(j)) != 0) {
-                toAddTitle = false;
-            }
-            else {
-                addOrDont = true;
-            }
-        }
-    }
-    
-    if (toAddTitle == true) {
-        localStorage.setItem(storeUserInput, JSON.stringify(storeTerms)); 
-    }  
-
-}
+let count = 0;
 
 const addTerm = (ev) => {
     ev.preventDefault();
@@ -38,7 +16,7 @@ const addTerm = (ev) => {
         definition: document.querySelector("#fdefi").value
     }
 
-// Check if term is "" -> Remove if nothing
+    // Check if term is "" -> Remove if nothing
     if (addTerms.value == "" || addTerms.definition == "") {
         alert('try again');
     } 
@@ -56,6 +34,42 @@ const addTerm = (ev) => {
     
 
 }
+
+function storeUserValue() {
+    storeUserInput = listOfCards.value;
+}
+
+function addGameCards() {
+// Goal is to add a title that isn't already in local Storage. If it is then keep the .value as that title unless it's
+// debugger;
+    let toAddTitle = true;
+    if (localStorage.length != 0) {
+        for (let j = 0; j < localStorage.length; j++) {
+            arrayOfTitles.push(localStorage.key(j));
+        }
+            if (arrayOfTitles.indexOf(storeUserInput) > -1) {
+                toAddTitle = false;
+            }
+            else {
+                toAddTitle = true;
+            }
+        
+    }
+    // Checks if this is page new -> Adds terms to the same key name
+    if (count > 0) {
+        toAddTitle = true;
+    }
+    
+    if (toAddTitle == true) {
+        localStorage.setItem(storeUserInput, JSON.stringify(storeTerms)); 
+        count ++;
+    }  
+    else {
+        // Add items to already made titles
+    }
+
+}
+
 let term1;
 let term2;
 let term3;
@@ -229,28 +243,10 @@ function reloadGame() {
         randomizeCard();
     }
 
-
-
-
-    // let stopThisTrue = true;
-    // let amount = 0;
-    // while (stopThisTrue == true) {
-    //         if (determinedTerm.indexOf(correctTerms[amount]) == 1) {
-    //             setTopCardDefinition();
-    //             stopThisTrue = true;
-    //             console.log(correctTerms);
-    //         }
-    //         else {
-    //             stopThisTrue = false;
-    //             randomizeCard();
-    //             // giveAllDefinittion();
-    //             // randomBottom();
-    //         }
-        
-    // }  
 }
 
 function startGame() {
+    // debugger;
     if (JSON.parse(localStorage.getItem(storeUserInput)).length < 4) {
         alert('You have less than 4 terms');
         } 
@@ -259,7 +255,8 @@ function startGame() {
         stopBtn.style.display = "block";
         // function for randomizing terms
             randomizeCard();
-         }    
+         }  
+          
 }
 function stopGame() {
     let userStopGameInput = prompt('You will lose your progress and terms, "yes" or "no"');
@@ -276,8 +273,6 @@ function clearEverything() {
     document.querySelector("#termsAdded pre").innerHTML = '';
 }
 
-
-
 window.onload=function() {
     // start game
     let readyBtn = document.getElementById("readyBtn");
@@ -293,24 +288,10 @@ window.onload=function() {
     listOfCards.addEventListener("change", storeUserValue);
     titlesList = document.querySelector("#listOfTitles pre");
 
-if (localStorage.length > 0) {
-
-    for (let jw = 0; jw < localStorage.length; jw++) {
-        titlesList.textContent += localStorage.key(jw) + "\n";
+    if (localStorage.length > 0) {
+        for (let jw = 0; jw < localStorage.length; jw++) {
+            titlesList.textContent += localStorage.key(jw) + "\n";
+        }
     }
-
-}
         
 }
-
-
-
-
-// Have each as a number so to get one term it would be 3.term
-// Have a correct and wrong box / array. Move them into those if correct or even have 2 sets of correctness. One for getting it right, another for writing the term and getting it right
-// Have a override i was correct button
-
-// const term1 = document.querySelector("#term-one");
-//     const term2 = document.querySelector("#term-two");
-//     const term3 = document.querySelector("#term-three");
-//     const term4 = document.querySelector("#term-four");
